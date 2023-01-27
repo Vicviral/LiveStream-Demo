@@ -1,16 +1,22 @@
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+ext {
+    secrets = [
+            streamApiKey : keyProperty("STREAM_API_KEY"),
+            userToken : keyProperty("USER_TOKEN")
+    ]
 }
 
 android {
-    namespace 'com.victorloveday.flagme'
-    compileSdk 32
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.victorloveday.flagme"
-        minSdk 23
-        targetSdk 32
+        applicationId "io.getstream.livestreamclone"
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -18,27 +24,45 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', 'STREAM_API_KEY', "\"${secrets.streamApiKey}\""
+            buildConfigField 'String', 'USER_TOKEN', "\"${secrets.userToken}\""
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'STREAM_API_KEY', "\"${secrets.streamApiKey}\""
+            buildConfigField 'String', 'USER_TOKEN', "\"${secrets.userToken}\""
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation "com.google.android.material:material:1.1.0"
+
+    implementation 'com.github.getstream:stream-chat-android-client:1.4.1'
+
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    testImplementation 'junit:junit:4.12'
 }
