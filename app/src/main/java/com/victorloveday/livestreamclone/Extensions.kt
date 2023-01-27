@@ -1,4 +1,4 @@
-package io.getstream.livestreamclone
+package com.victorloveday.livestreamclone
 
 import android.app.Activity
 import android.view.inputmethod.InputMethodManager

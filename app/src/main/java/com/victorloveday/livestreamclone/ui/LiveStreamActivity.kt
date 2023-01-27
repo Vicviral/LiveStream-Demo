@@ -1,4 +1,4 @@
-package io.getstream.livestreamclone
+package com.victorloveday.livestreamclone.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import com.victorloveday.livestreamclone.hideKeyboard
+import io.victorloveday.livestreamclone.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class LiveStreamActivity : AppCompatActivity(R.layout.activity_main) {

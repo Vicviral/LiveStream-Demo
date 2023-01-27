@@ -1,6 +1,7 @@
-package io.getstream.livestreamclone
+package com.victorloveday.livestreamclone
 
 import android.app.Application
+import io.victorloveday.livestreamclone.BuildConfig
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 

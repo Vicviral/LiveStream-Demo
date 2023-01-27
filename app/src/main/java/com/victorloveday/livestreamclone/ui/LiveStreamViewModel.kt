@@ -1,4 +1,4 @@
-package io.getstream.livestreamclone
+package com.victorloveday.livestreamclone.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
