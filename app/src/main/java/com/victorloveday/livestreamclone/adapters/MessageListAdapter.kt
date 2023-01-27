@@ -11,14 +11,14 @@ import com.victorloveday.livestreamclone.loadUrl
 import com.victorloveday.livestreamclone.name
 import io.getstream.chat.android.client.models.Message
 import io.victorloveday.livestreamclone.R
-import kotlinx.android.synthetic.main.item_comment.view.*
+import kotlinx.android.synthetic.main.item_message.view.*
 
 /**
  *Created by Victor Loveday on 1/27/23
  */
 class MessageListAdapter(): ListAdapter<Message, MessageViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-       val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_comment, parent, false)
+       val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_message, parent, false)
         return MessageViewHolder(itemView)
     }
 

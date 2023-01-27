@@ -27,10 +27,10 @@
         android:layout_height="0dp"
         android:background="@drawable/bg_chat"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/messagesList" />
+        app:layout_constraintTop_toTopOf="@+id/messagesListRV" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/messagesList"
+        android:id="@+id/messagesListRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_x_small"

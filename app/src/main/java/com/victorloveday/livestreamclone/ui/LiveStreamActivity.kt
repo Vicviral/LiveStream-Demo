@@ -6,16 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
+import com.victorloveday.livestreamclone.adapters.MessageListAdapter
 import com.victorloveday.livestreamclone.hideKeyboard
+import io.getstream.chat.android.client.models.Message
 import io.victorloveday.livestreamclone.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class LiveStreamActivity : AppCompatActivity(R.layout.activity_main) {
 
+    private val adapter: MessageListAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         loadMockVideoStream()
+        messagesListRV.adapter = adapter
 
         val viewModel: LiveStreamViewModel by viewModels()
 
@@ -25,6 +30,13 @@ class LiveStreamActivity : AppCompatActivity(R.layout.activity_main) {
             messageInput.clearFocus()
             messageInput.hideKeyboard()
         }
+    }
+
+    private fun updateMessageList(messages: List<Message>) {
+        adapter.submitList(messages)
+        adapter.notifyDataSetChanged()
+        val scrollTarget = adapter.itemCount
+        messagesListRV.scrollToPosition(scrollTarget) // always scroll to the bottom of the messages
     }
 
     private fun loadMockVideoStream() {
