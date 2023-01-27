@@ -42,7 +42,7 @@ class LiveStreamViewModel : ViewModel() {
     }
 
     fun sendButtonClicked(message: String) {
-        TODO("Not implemented yet")
+//        TODO("Not implemented yet")
     }
 
     companion object {
