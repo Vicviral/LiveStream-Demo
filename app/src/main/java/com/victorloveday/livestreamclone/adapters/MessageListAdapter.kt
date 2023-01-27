@@ -1,5 +1,6 @@
 package com.victorloveday.livestreamclone.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.item_message.view.*
 /**
  *Created by Victor Loveday on 1/27/23
  */
-class MessageListAdapter(): ListAdapter<Message, MessageViewHolder>(DiffCallback) {
+class MessageListAdapter(private val context: Context): ListAdapter<Message, MessageViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_message, parent, false)
         return MessageViewHolder(itemView)
